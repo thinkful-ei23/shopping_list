@@ -1,4 +1,24 @@
 'use strict';
+/* global $ */
+
+
+const STORE = [{
+  name: 'apples',
+  checked: false
+},
+{
+  name: 'oranges',
+  checked: false
+},
+{
+  name: 'milk',
+  checked: true
+},
+{
+  name: 'bread',
+  checked: false
+}
+];
 
 function renderShoppingList() {
   // this function will be responsible for rendering the shopping list in
@@ -27,6 +47,13 @@ function handleDeleteItemClicked() {
 // initially rendering the shopping list, and activating our individual functions
 // that handle new item submission and user clicks on the "check" and "delete" buttons
 // for individual shopping list items.
-function handleShoppingList () {
+function handleShoppingList() {
+  renderShoppingList();
+  handleNewItemSubmit();
+  handleItemCheckedClicked();
+  handleDeleteItemClicked();
 
 }
+
+// when the page loads, call `handleShoppingList`
+$(handleShoppingList);
