@@ -2,22 +2,23 @@
 /* global $ */
 
 
-const STORE = [{
-  name: 'apples',
-  checked: false
-},
-{
-  name: 'oranges',
-  checked: false
-},
-{
-  name: 'milk',
-  checked: true
-},
-{
-  name: 'bread',
-  checked: false
-}
+const STORE = [
+  {
+    name: 'apples',
+    checked: false
+  },
+  {
+    name: 'oranges',
+    checked: false
+  },
+  {
+    name: 'milk',
+    checked: true
+  },
+  {
+    name: 'bread',
+    checked: false
+  }
 ];
 
 function generateItemElement(item, itemIndex, template) {
@@ -51,12 +52,25 @@ function renderShoppingList() {
 
   // insert that HTML into the DOM
   $('.js-shopping-list').html(shoppingListItemsString);
+}
 
+function addItemToShoppingList(itemName) {
+  console.log(`Adding "${itemName}" to shopping list`);
+  STORE.push({
+    name: itemName,
+    checked: false
+  });
 }
 
 function handleNewItemSubmit() {
-  // this function will be responsible for when users add a new shopping list item
-  console.log('handleNewItemSubmit ran');
+  $('#js-shopping-list-form').submit(function (event) {
+    event.preventDefault();
+    console.log('`handleNewItemSubmit` ran');
+    const newItemName = $('.js-shopping-list-entry').val();
+    $('.js-shopping-list-entry').val('');
+    addItemToShoppingList(newItemName);
+    renderShoppingList();
+  });
 }
 
 function handleItemCheckedClicked() {
