@@ -50,3 +50,11 @@ button:hover {
     text-decoration: line-through;
 }
 
+
+form > input {
+    margin-top: 15px;
+}
+
+.checkboxToggle {
+    margin-top: 15px;
+}

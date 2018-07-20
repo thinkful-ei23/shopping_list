@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title> Shopping List</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="main.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <title> Shopping List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 </head>
+
 <body>
   <div class="container">
     <h1>Shopping List</h1>
@@ -17,11 +19,18 @@
       <label for="shopping-list-entry">Add an item</label>
       <input type="text" name="shopping-list-entry" class="js-shopping-list-entry" placeholder="e.g., broccoli">
       <button type="submit">Add item</button>
+      <br>
+      <label for="shopping-list-entry">Search an item</label>
+      <input type="text" name="shopping-list-search" class="js-shopping-list-search" placeholder="e.g., broccoli">
+      <button type="submit">Search item</button>
+      <br>
+      <input type="checkbox" class="checkboxToggle js-checkboxToggle"> Check to view only unchecked items.
     </form>
     <ul class="shopping-list js-shopping-list">
     </ul>
   </div>
-    <script src="//code.jquery.com/jquery.min.js"></script>
-    <script type="text/javascript" src="index.js"></script>
+  <script src="//code.jquery.com/jquery.min.js"></script>
+  <script type="text/javascript" src="index.js"></script>
 </body>
+
 </html>

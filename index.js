@@ -2,24 +2,14 @@
 /* global $ */
 
 
-const STORE = [
-  {
-    name: 'apples',
-    checked: false
-  },
-  {
-    name: 'oranges',
-    checked: false
-  },
-  {
-    name: 'milk',
-    checked: true
-  },
-  {
-    name: 'bread',
-    checked: false
-  }
-];
+const STORE = {
+  items: [
+    {name: 'apples', checked: false}, 
+    {name: 'oranges', checked: false},
+    {name: 'milk', checked: true},
+    {name: 'bread', checked: false}
+  ],
+};
 
 function generateItemElement(item, itemIndex, template) {
   return `
@@ -48,7 +38,7 @@ function renderShoppingList() {
   // this function will be responsible for rendering the shopping list in
   // the DOM
   console.log('renderShoppingList ran');
-  const shoppingListItemsString = generateShoppingItemsString(STORE);
+  const shoppingListItemsString = generateShoppingItemsString(STORE.items);
 
   // insert that HTML into the DOM
   $('.js-shopping-list').html(shoppingListItemsString);
@@ -56,7 +46,7 @@ function renderShoppingList() {
 
 function addItemToShoppingList(itemName) {
   console.log(`Adding "${itemName}" to shopping list`);
-  STORE.push({
+  STORE.items.push({
     name: itemName,
     checked: false
   });
@@ -75,7 +65,7 @@ function handleNewItemSubmit() {
 
 function toggleCheckedForListItem(itemIndex) {
   console.log(`Toggling checked property for item at index ${itemIndex}`);
-  STORE[itemIndex].checked = !STORE[itemIndex].checked;
+  STORE.items[itemIndex].checked = !STORE.items[itemIndex].checked;
 }
 
 function getItemIndexFromElement(item) {
@@ -84,9 +74,11 @@ function getItemIndexFromElement(item) {
     .attr('data-item-index');
   return parseInt(itemIndexString, 10);
 }
+
 function handleItemCheckedClicked() {
   $('.js-shopping-list').on('click', '.js-item-toggle', function(event) {
     console.log('handleItemCheckedClicked ran');
+    console.log(event.currentTarget);
     const itemIndex = getItemIndexFromElement(event.currentTarget);
     toggleCheckedForListItem(itemIndex);
     renderShoppingList();
@@ -96,9 +88,8 @@ function handleItemCheckedClicked() {
 
 
 function deleteItemFromStore(index) {
-  STORE.splice(index, 1);
+  STORE.items.splice(index, 1);
 }
-
 
 function handleDeleteItemClicked() {
   console.log('handleDeleteItemClicked');
@@ -111,6 +102,24 @@ function handleDeleteItemClicked() {
   });
 }
 
+
+
+function findCrossedOutItems(items) {
+  const checkedItems = items.filter(function(listItems) {
+    listItems.checked === true;
+  });
+  console.log(checkedItems);
+}
+
+
+
+function handleClickedCheckBox() {
+  $('.checkboxToggle').click(function(event) {
+    console.log('handleClickedCheckBox');
+    findCrossedOutItems(STORE.items);
+  });
+}
+
 // this function will be our callback when the page loads. it's responsible for
 // initially rendering the shopping list, and activating our individual functions
 // that handle new item submission and user clicks on the "check" and "delete" buttons
@@ -120,6 +129,7 @@ function handleShoppingList() {
   handleNewItemSubmit();
   handleItemCheckedClicked();
   handleDeleteItemClicked();
+  handleClickedCheckBox();
 
 }
 
