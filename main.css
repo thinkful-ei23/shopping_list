@@ -50,6 +50,10 @@ button:hover {
     text-decoration: line-through;
 }
 
+.shopping-item__hidden {
+    display: none;
+}
+
 
 form > input {
     margin-top: 15px;

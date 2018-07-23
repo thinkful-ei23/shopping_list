@@ -15,18 +15,19 @@
 <body>
   <div class="container">
     <h1>Shopping List</h1>
-    <form id="js-shopping-list-form">
+    <form id="js-shopping-list-add-form">
       <label for="shopping-list-entry">Add an item</label>
-      <input type="text" name="shopping-list-entry" class="js-shopping-list-entry" placeholder="e.g., broccoli">
+      <input type="text" id="shopping-list-entry" name="shopping-list-entry" class="js-shopping-list-entry" placeholder="e.g., broccoli">
       <button type="submit">Add item</button>
-      <br>
-      <label for="shopping-list-entry">Search an item</label>
-      <input type="text" name="shopping-list-search" class="js-shopping-list-search" placeholder="e.g., broccoli">
+    </form>
+    <form id="js-shopping-list-search-form">
+      <label for="shopping-list-search">Search an item</label>
+      <input type="text" id="shopping-list-search" name="shopping-list-search" class="js-shopping-list-search" placeholder="e.g., broccoli">
       <button type="submit">Search item</button>
-      <br>
+    </form>
+    <form id="js-shopping-list-checked-form">
       <input type="checkbox" class="checkboxToggle js-checkboxToggle"> Check to view only unchecked items.
     </form>
-    <form></form>
     <ul class="shopping-list js-shopping-list">
     </ul>
   </div>
